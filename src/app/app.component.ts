@@ -1,18 +1,37 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-interface Indicator {
-   id: string;
-   title: string;
-   value: number;
-   minValue: number;
-   maxValue: number;
-}
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: './Silo towers.svg',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  data: Indicator[] = [
+    {
+      id: '1',
+      title: 'Уровень карналита',
+      value: 55,
+      minValue: 20,
+      maxValue: 80
+    },
+    {
+      id: '2',
+      title: 'Уровень карналита',
+      value: 68,
+      minValue: 30,
+      maxValue: 90
+    },
+    {
+      id: '3',
+      title: 'Уровень карналита',
+      value: 12,
+      minValue: 40,
+      maxValue: 60
+    },
+  ];
+
   title = 'test-task';
 }
