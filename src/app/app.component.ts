@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-
+import {ChangeDetectorRef, Component, DoCheck, OnInit} from '@angular/core';
+import {DataService} from "./api/data.service";
 
 
 @Component({
@@ -7,31 +7,19 @@ import {Component} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  data: Indicator[] = [
-    {
-      id: '1',
-      title: 'Уровень карналита',
-      value: 55,
-      minValue: 20,
-      maxValue: 80
-    },
-    {
-      id: '2',
-      title: 'Уровень карналита',
-      value: 68,
-      minValue: 30,
-      maxValue: 90
-    },
-    {
-      id: '3',
-      title: 'Уровень карналита',
-      value: 12,
-      minValue: 40,
-      maxValue: 60
-    },
-  ];
+  data: Indicator[];
 
-  title = 'test-task';
+  constructor(private dataService: DataService) {
+  }
+
+  ngOnInit() {
+    this.dataService.dataAPI$.subscribe(
+      (a) => {
+        this.data = a;
+      }
+    )
+  }
+
 }
